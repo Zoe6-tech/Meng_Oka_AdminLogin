@@ -33,13 +33,13 @@ if(isset($_SESSION['user_id'])){
 </head>
 <body>
     <?php echo !empty($message)?$message:'';?> <!--if $message isnt empty, print $message info-->
-
+     <h2>User Login</h2>
     <form action="admin_login.php" method="post">
-       <label for="username">Username:</label>
-       <input id="username" type="text" name="username" value="">
+       <label for="username">Username:</label><br>
+       <input id="username" type="text" name="username" value="" placeholder="Enter username">
        <br><br>
-       <label for="password">Password:</label>
-       <input id="password" type="text" name="password" value="">
+       <label for="password">Password:</label><br>
+       <input id="password" type="text" name="password" value="" placeholder="Enter password">
        <br><br>
        <button type="submit" name="submit">Login</button>
     </form>
