@@ -8,7 +8,7 @@ $ip = $_SERVER['REMOTE_ADDR'];//"REMOTE_ADDR" => The IP address from which the u
 if(isset($_POST['submit'])){
     $username = trim($_POST['username']);
     $password = trim($_POST['password']); //The trim() function removes whitespace and other predefined characters from both sides of a string.
-
+    
     
     if(!empty($username) && !empty($password)){//if username and password both not empty
         $result = login($username, $password, $ip);//allow login, login function in login.php
@@ -17,6 +17,17 @@ if(isset($_POST['submit'])){
         $message = 'Plesase fill out the request field';
     }
 }
+
+//Account complete lockout after 3 failed login attempts.
+session_start();
+  $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? ($_SESSION['login_attempts'] + 1) : 0;
+  // do checking on number of attempts
+  if ($_SESSION['login_attempts'] > 3)
+  {
+    echo "Go Away! Hacker!";
+    //echo "<br />\n"; echo "Please wait 30 seconds...";
+    die();
+  }
 
 
 //if user already log in, redirect user to welcome.php, dont allow login in user access admin_login.php again
