@@ -1,7 +1,7 @@
 # Research Assignment #1:​​Admin Login
 ✔️ 00 - 30%   :: Allows user to login to a welcome page.<br>
 ✔️ 30 - 60%   :: Displays date/time of LAST successful login. (For example, if a userlogged in yesterday, when the user first time logged in today, it should showyesterday’s date/time as the LAST successful login, while if the user logged in again today, it should show today’s first time login date/time)<br>
-* 60 - 80%  :: Account complete lockout after 3 failed login attempts.<br>
+✔️ 60 - 80%  :: Account complete lockout after 3 failed login attempts.<br>
 * 80 - 100% :: Count the total successfully login number of the account and displayin the welcome page.<br>
 
 ## Section
@@ -9,7 +9,9 @@
 * Welcome page
 
 ## Reference
-([User Last Login Time](https://www.bing.com/videos/search?q=Displaying+last+login+time+in+php&ru=%2fvideos%2fsearch%3fq%3dDisplaying%2blast%2blogin%2btime%2bin%2bphp%26FORM%3dHDRSC4&view=detail&mid=488E39CCEFB02AAC24D1488E39CCEFB02AAC24D1&&FORM=VDRVSR)) 
+* ([User Last Login Time](https://www.bing.com/videos/search?q=Displaying+last+login+time+in+php&ru=%2fvideos%2fsearch%3fq%3dDisplaying%2blast%2blogin%2btime%2bin%2bphp%26FORM%3dHDRSC4&view=detail&mid=488E39CCEFB02AAC24D1488E39CCEFB02AAC24D1&&FORM=VDRVSR)) 
+* ([Account complete lockout after 3 failed login attempts](https://stackoverflow.com/questions/11524614/php-login-counter)) 
+
 
 ## Author
 Ryoko Oka<br>

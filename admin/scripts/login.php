@@ -45,7 +45,7 @@ function login($username, $password, $ip) {
                 ':user_id' => $found_user_id
             )
         );
-        $_SESSION['user_lastlogintime'] = $found_user['last_login_time'];//write user_ip in session
+        $_SESSION['user_lastlogintime'] = $found_user['last_login_time'];//write user_lastlogintime in session
 
 
        ##TODO : debug only, will change here
@@ -57,7 +57,7 @@ function login($username, $password, $ip) {
     }else{
 
        //this is invaild attemp, reject it!
-       return "Sorry, your username or password isn't correct. Please try again or sign in first.";
+       return "Sorry, your username or password isn't correct. ";
     }
 }
 
