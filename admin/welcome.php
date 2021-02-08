@@ -12,7 +12,8 @@ confirm_logged_in();//only login in user can see the index.php page
 </head>
 <body>
     <h2>Hello <?php echo $_SESSION['user_name'];?>! Welcome To Our Page. </h2>
-
+    <h4>IP address:  <?php echo $_SESSION['user_ip']?></h4>
+    <h4>Last Login Time: <?php echo $_SESSION['user_lastlogintime']; ?></h4>
     <a href="admin_logout.php">Sign Out</a>
 </body>
 </html>
