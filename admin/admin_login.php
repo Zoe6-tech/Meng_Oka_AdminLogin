@@ -14,19 +14,23 @@ if(isset($_POST['submit'])){
         $result = login($username, $password, $ip);//allow login, login function in login.php
         $message = $result;
     }else{
+        echo "<br />\n";
         $message = 'Plesase fill out the request field';
     }
 }
 
 //Account complete lockout after 3 failed login attempts.
-session_start();
+session_start();//start the session
   $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? ($_SESSION['login_attempts'] + 1) : 0;
   // do checking on number of attempts
-  if ($_SESSION['login_attempts'] > 3)
+  if ($_SESSION['login_attempts'] > 2)
   {
-    echo "Go Away! Hacker!";
-    //echo "<br />\n"; echo "Please wait 30 seconds...";
-    die();
+    echo "Login failure: Maximum login attempts was exceeded !";
+    echo "<br />\n"; 
+    echo " * Your IP is locked by server due to repeatedly fails logins. If you have any questions, please contact  administrator.";
+    echo "<br />\n"; 
+    //echo "Please wait 30 seconds...";
+    //die();
   }
 
 
@@ -54,6 +58,8 @@ if(isset($_SESSION['user_id'])){
        <input id="password" type="text" name="password" value="" placeholder="Enter password">
        <br><br>
        <button type="submit" name="submit">Login</button>
+       <h4>* Login Attempt: <?php echo $_SESSION['login_attempts']; ?> </h4>
+        <h5>Account will complete lockout after you 3 failed login attempts, please be careful ！！！</h5>
     </form>
 </body>
 </html>

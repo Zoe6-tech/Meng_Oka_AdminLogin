@@ -47,7 +47,18 @@ function login($username, $password, $ip) {
         );
         $_SESSION['user_lastlogintime'] = $found_user['last_login_time'];//write user_lastlogintime in session
 
-
+       
+        //update the number of successfully login
+        $counter=1;
+        $update_user_query = 'UPDATE tbl_user SET success_login_number = 0  WHERE user_id = :user_id';
+        $update_user_set = $pdo -> prepare($update_user_query);
+        $update_user_set -> execute(
+            array(
+                ':success_login_number' => 'success_login_number' +  $counter,
+                ':user_id' => $found_user_id
+            )
+        );
+        $_SESSION['user_succeelogin'] = $found_user['success_login_number'];
        ##TODO : debug only, will change here
        //return 'Hello, ' . $username . '!  <br />  Your IP address (using $_SERVER[\'REMOTE_ADDR\']) is ' . $ip . '<br /><br />';
                
@@ -57,6 +68,7 @@ function login($username, $password, $ip) {
     }else{
 
        //this is invaild attemp, reject it!
+       echo "<br />\n";
        return "Sorry, your username or password isn't correct. ";
     }
 }
