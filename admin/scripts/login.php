@@ -21,7 +21,6 @@ function login($username, $password, $ip) {
        //if found user exist in user database, get him in!
 
         $found_user_id = $found_user['user_id'];//get user id
-
         //write the username and userID into session
         $_SESSION['user_id'] = $found_user_id;
         $_SESSION['user_name'] = $found_user['user_fname'];
@@ -35,10 +34,23 @@ function login($username, $password, $ip) {
                 ':user_id' => $found_user_id
             )
         );
+        $_SESSION['user_ip'] = $found_user['user_ip'];//write user_ip in session
+
+
+        //update the user last login time by the current loggod in one 
+        $update_user_query = 'UPDATE tbl_user SET last_login_time =now() WHERE user_id = :user_id';
+        $update_user_set = $pdo -> prepare($update_user_query);
+        $update_user_set -> execute(
+            array(
+                ':user_id' => $found_user_id
+            )
+        );
+        $_SESSION['user_lastlogintime'] = $found_user['last_login_time'];//write user_ip in session
+
 
        ##TODO : debug only, will change here
        //return 'Hello, ' . $username . '!  <br />  Your IP address (using $_SERVER[\'REMOTE_ADDR\']) is ' . $ip . '<br /><br />';
-       
+               
        //after login in succes, redirect user back to welcome.php, redirect_to function
        redirect_to('welcome.php');
 

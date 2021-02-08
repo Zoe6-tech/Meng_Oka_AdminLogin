@@ -8,6 +8,7 @@ $ip = $_SERVER['REMOTE_ADDR'];//"REMOTE_ADDR" => The IP address from which the u
 if(isset($_POST['submit'])){
     $username = trim($_POST['username']);
     $password = trim($_POST['password']); //The trim() function removes whitespace and other predefined characters from both sides of a string.
+
     
     if(!empty($username) && !empty($password)){//if username and password both not empty
         $result = login($username, $password, $ip);//allow login, login function in login.php
