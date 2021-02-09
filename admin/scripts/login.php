@@ -58,7 +58,7 @@ function login($username, $password, $ip) {
                 ':user_id' => $found_user_id
             )
         );
-        $_SESSION['user_succeelogin'] = $found_user['success_login_number'];
+        $_SESSION['success_login_number'] = $found_user['success_login_number'];
        ##TODO : debug only, will change here
        //return 'Hello, ' . $username . '!  <br />  Your IP address (using $_SERVER[\'REMOTE_ADDR\']) is ' . $ip . '<br /><br />';
                

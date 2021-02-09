@@ -1,0 +1,15 @@
+== Reference ==
+
+<Last login date>
+https://hit.hateblo.jp/entry/2016/01/10/020958
+
+
+<Login Limit>
+10-1 認証システムへの攻撃と防護策 [PHPセキュリティー]
+https://wepicks.net/phpsecurity-auth/
+
+How to limit login attempt Using PHP and MySQL
+https://phpgurukul.com/how-to-limit-login-attempt-using-php-and-mysql/
+
+
+<Count Total Successfully Login>
