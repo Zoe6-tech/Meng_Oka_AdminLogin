@@ -49,16 +49,18 @@ function login($username, $password, $ip) {
 
        
         //update the number of successfully login
-        $counter=1;
-        $update_user_query = 'UPDATE tbl_user SET success_login_number = 0  WHERE user_id = :user_id';
-        $update_user_set = $pdo -> prepare($update_user_query);
-        $update_user_set -> execute(
+        $update_user_query = 'UPDATE tbl_user SET user_ip= :user_ip, user_date=now(),success_login_number=:success_login_number WHERE user_id=:user_id';
+        $update_user_set = $pdo->prepare($update_user_query);
+        $update_user_set->execute(
             array(
-                ':success_login_number' => 'success_login_number' +  $counter,
-                ':user_id' => $found_user_id
-            )
+                ':user_ip'=>$ip,
+                ':user_id'=>$found_user_id,
+                ':success_login_number'=>$_SESSION['success_login_number']
+                )
         );
-        $_SESSION['success_login_number'] = $found_user['success_login_number'];
+        $_SESSION['success_login_number'] = $found_user['success_login_number']+1;
+
+
        ##TODO : debug only, will change here
        //return 'Hello, ' . $username . '!  <br />  Your IP address (using $_SERVER[\'REMOTE_ADDR\']) is ' . $ip . '<br /><br />';
                
