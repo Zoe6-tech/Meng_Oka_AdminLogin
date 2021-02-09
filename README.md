@@ -2,7 +2,7 @@
 ✔️ 00 - 30%   :: Allows user to login to a welcome page.<br>
 ✔️ 30 - 60%   :: Displays date/time of LAST successful login. (For example, if a userlogged in yesterday, when the user first time logged in today, it should showyesterday’s date/time as the LAST successful login, while if the user logged in again today, it should show today’s first time login date/time)<br>
 ✔️ 60 - 80%  :: Account complete lockout after 3 failed login attempts.<br>
-* 80 - 100% :: Count the total successfully login number of the account and displayin the welcome page.<br>
+✔️ 80 - 100% :: Count the total successfully login number of the account and displayin the welcome page.<br>
 
 ## Section
 * Login Page<br>

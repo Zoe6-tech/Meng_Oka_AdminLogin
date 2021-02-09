@@ -24,6 +24,8 @@ function login($username, $password, $ip) {
         //write the username and userID into session
         $_SESSION['user_id'] = $found_user_id;
         $_SESSION['user_name'] = $found_user['user_fname'];
+        $_SESSION['success_login_number'] = $found_user['success_login_number']+1;
+      
 
         //update the user IP by the curren logged in one
         $update_user_query = 'UPDATE tbl_user SET user_ip = :user_ip WHERE user_id = :user_id';
@@ -43,22 +45,22 @@ function login($username, $password, $ip) {
         $update_user_set -> execute(
             array(
                 ':user_id' => $found_user_id
+                
             )
         );
         $_SESSION['user_lastlogintime'] = $found_user['last_login_time'];//write user_lastlogintime in session
 
        
         //update the number of successfully login
-        $counter=1;
-        $update_user_query = 'UPDATE tbl_user SET success_login_number = 0  WHERE user_id = :user_id';
-        $update_user_set = $pdo -> prepare($update_user_query);
-        $update_user_set -> execute(
+        $update_user_query = 'UPDATE tbl_user SET success_login_number=:success_login_number WHERE user_id=:user_id';
+        $update_user_set = $pdo->prepare($update_user_query);
+        $update_user_set->execute(
             array(
-                ':success_login_number' => 'success_login_number' +  $counter,
-                ':user_id' => $found_user_id
-            )
+                ':user_id'=>$found_user_id,
+                ':success_login_number'=>$_SESSION['success_login_number']
+                )
         );
-        $_SESSION['user_succeelogin'] = $found_user['success_login_number'];
+        
        ##TODO : debug only, will change here
        //return 'Hello, ' . $username . '!  <br />  Your IP address (using $_SERVER[\'REMOTE_ADDR\']) is ' . $ip . '<br /><br />';
                
