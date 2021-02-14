@@ -33,6 +33,7 @@ session_start();//start the session
     //echo "Please wait 30 seconds...";
 
     die();
+
   }
 
 
