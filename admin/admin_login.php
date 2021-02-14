@@ -30,7 +30,7 @@ session_start();//start the session
     echo " * Your IP is locked by server due to repeatedly fails logins. If you have any questions, please contact administrator.";
     echo "<br />\n"; 
     //echo "Please wait 30 seconds...";
-    die();
+    //die();
   }
 
 
