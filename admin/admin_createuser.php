@@ -42,12 +42,14 @@ if(isset($_POST['submit'])){
     } else {
         $user_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     }
+//password
 
+        $user_password = genRandomString();
 
     $data = array(
         'fname' => trim($_POST['fname']),
         'username' => trim($_POST['username']),
-        'password' => trim($_POST['password']),
+        'password' =>  $user_password,
         'email' => trim($_POST['email'])
     );
 
@@ -61,6 +63,7 @@ $email_recipient = $user_email; //to user email
 $email_subject = "This an email that remind that you can login in our website now";
 
 $email_message = sprintf('Your username is: %s, Your email is: %s', $user_name, $user_email);
+$email_message .= sprintf('Your password is: %s', $user_password);
 $email_message .= 'Welcome login our awesome website: www.awesome.com';
 
 $email_headers = "From: The Sender Name <admin@awesome.com>\r\n";
@@ -101,7 +104,7 @@ echo json_encode($results);
         <input type="text" name="username"  id="user_name" placeholder="enter user name" value=""><br><br>
 
         <label for="password">Password:</label><br>
-        <input type="text" name="password"  id="password" placeholder="enter password" value=""><br><br>
+        <input type="text" name="password"  id="password" placeholder="Auto-generate for user " value=""><br><br>
 
         <label for="email">Email:</label><br>
         <input type="email" name="email"  id="email" placeholder="enter email" value=""><br><br>
