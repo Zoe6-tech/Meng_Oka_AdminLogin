@@ -24,11 +24,10 @@ function createUser($user_data){
     );
 
 
-
     ## 2. Redirect to index.php if create user successfully, mayber leave some message to user? 
     ## Otherwise, showing error message
     if($create_user_result){
-        redirect_to('welcome.php');
+        redirect_to('admin_createsuccess.php');
     }else{
         return 'The user did not go through!!!';
     }
