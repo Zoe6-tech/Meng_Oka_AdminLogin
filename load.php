@@ -4,7 +4,7 @@ define('ADMIN_PATH',ABSPATH.'./admin');
 define('ADMIN_SCRIPT_PATH',ADMIN_PATH.'./scripts');
 
 //  ini_set('display_errors',1); or change 1 to 0
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 session_start();//server create session for us and it unique
 

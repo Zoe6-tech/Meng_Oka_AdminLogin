@@ -18,7 +18,7 @@ confirm_logged_in();//only login in user can see the index.php page
     <h4>Last Login Time: <?php echo $_SESSION['user_lastlogintime']; ?></h4>
     <h4>Number of Successful Login: <?php echo $_SESSION['success_login_number'];?></h4>
     <br>
-    <a href="admin_createuser.php">Create User</a>
+    <a href="admin_createuser.php">Create User</a><br>
     <a href="admin_logout.php">Sign Out</a>
 </body>
 </html>

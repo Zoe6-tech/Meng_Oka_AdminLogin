@@ -20,7 +20,6 @@ if(isset($_POST['submit'])){
 }
 
 //Account complete lockout after 3 failed login attempts.
-session_start();//start the session
   $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? ($_SESSION['login_attempts'] + 1) : 0;
   // do checking on number of attempts
   if ($_SESSION['login_attempts'] > 2)
