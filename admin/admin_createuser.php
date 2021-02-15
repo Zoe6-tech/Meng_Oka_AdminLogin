@@ -1,4 +1,6 @@
 <?php
+
+
 require_once '../load.php';
 
 //make sure this page only access to login admin
@@ -55,10 +57,13 @@ if(isset($_POST['submit'])){
 
 
 //prepare email
-$email_recipient = $user_email; 
-$email_subject = "This a email that remind that you can login in now";
+$email_recipient = $user_email; //to user email
+$email_subject = "This an email that remind that you can login in our website now";
+
 $email_message = sprintf('Your username is: %s, Your email is: %s', $user_name, $user_email);
-$email_headers = "From: The Sender Name <admin@admin@gmail>\r\n";
+$email_message .= 'Welcome login our awesome website: www.awesome.com';
+
+$email_headers = "From: The Sender Name <admin@awesome.com>\r\n";
 $email_headers .= "To: $user_email\r\n";
 $email_headers .= "Content-Type: text/html\r\n";
 

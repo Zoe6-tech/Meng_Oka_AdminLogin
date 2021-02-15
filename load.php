@@ -1,4 +1,10 @@
 <?php
+ini_set('SMTP', "server.com");
+
+ini_set('smtp_port', "25");
+
+ini_set('sendmail_from', "admin@domain.com");
+
 define('ABSPATH',__DIR__);//php will detect the director where is being called and save as a constant
 define('ADMIN_PATH',ABSPATH.'./admin');
 define('ADMIN_SCRIPT_PATH',ADMIN_PATH.'./scripts');
