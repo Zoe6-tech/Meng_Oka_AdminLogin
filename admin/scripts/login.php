@@ -1,6 +1,6 @@
 <!-- for any helper functions for login/log out -->
 <?php
-function login($username, $password, $ip) {
+function login($username, $password, $ip) {//password_hash
 
     ## TODO remove the following debug when done
     //return 'You are trying to login with Username:'.$username.'Password:'.$password;
@@ -13,7 +13,7 @@ function login($username, $password, $ip) {
     $user_set -> execute(
         array(
             ':username' => $username,
-            ':password' => $password
+            ':password' => $password 
         )
     );
 

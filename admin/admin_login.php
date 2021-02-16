@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
 //Account complete lockout after 3 failed login attempts.
   $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? ($_SESSION['login_attempts'] + 1) : 0;
   // do checking on number of attempts
-  if ($_SESSION['login_attempts'] > 2)
+  if ($_SESSION['login_attempts'] > 5)
   {
     echo "Login failure: Maximum login attempts was exceeded !";
     echo "<br />\n"; 
@@ -61,7 +61,8 @@ if(isset($_SESSION['user_id'])){
        <br><br>
        <button type="submit" name="submit">Login</button>
        <h4>* Login Attempt: <?php echo $_SESSION['login_attempts']; ?> </h4>
-        <h5>Account will complete lockout after you 3 failed login attempts, please be careful ！！！</h5>
+        <h5>Account will complete lockout after you 5 failed login attempts, please be careful ！！！</h5>
+        <h6>admin</h6><h6>admin123</h6>
     </form>
 </body>
 </html>
