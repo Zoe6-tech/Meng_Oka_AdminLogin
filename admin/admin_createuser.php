@@ -45,16 +45,42 @@ if(isset($_POST['submit'])){
     } else {
         $user_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     }
+//Auto-generate the password for the user
+    $user_password = genRandomString(); //password function
 
-//password
-        $user_password = genRandomString();//Auto-generate the password for the user
-        $hash = password_hash($user_password, PASSWORD_DEFAULT);//password is encrypted and stored in the database
+//prepare email
+    $email_recipient = $user_email; //to user email
+    $email_subject = sprintf('Hello %s, you can login to your account now ', $user_fname) ;
+
+    $email_message = sprintf("Your username is: %s, and your email is: %s \r\n", $user_name, $user_email);
+    echo "<br>";
+    $email_message .= sprintf("Your current password is: %s \r\n", $user_password);
+    echo "<br>";
+    $email_message .= "Welcome login our awesome website: www.awesome.com \r\n";
+
+    $email_headers = "From: Admin Meng <mengzhu0204@gmail.com>\r\n";
+    $email_headers .= "To: $user_email\r\n";
+    $email_headers .= "Content-Type: text/html\r\n";
+
+//  Send the email
+    $email_result = mail($email_recipient, $email_subject, $email_message,  $email_headers);
+    if($email_result){
+    $results['message'] = sprintf('You have successfully create a new user: %s', $user_name);
+    }else{
+    $results['message'] = sprintf('Sorry, the reminding email does not go throught.');
+    }
+
+    echo json_encode($results);
+
+//password setting
+    //password is encrypted and stored in the database
+    $hash = password_hash($user_password, PASSWORD_DEFAULT);
     
-        $data = array(
-        'fname' => trim($_POST['fname']),
-        'username' => trim($_POST['username']),
-        'password' =>  $hash,//password_hash
-        'email' => trim($_POST['email'])
+    $data = array(
+    'fname' => trim($_POST['fname']),
+    'username' => trim($_POST['username']),
+    'password' =>  $hash,//password_hash
+    'email' => trim($_POST['email'])
     );
 
     $message = createUser($data);
@@ -62,27 +88,7 @@ if(isset($_POST['submit'])){
 }
 
 
-//prepare email
-$email_recipient = $user_email; //to user email
-$email_subject = "This an email that remind that you can login in our website now";
 
-$email_message = sprintf('Your username is: %s, Your email is: %s', $user_name, $user_email);
-$email_message .= sprintf('Your current password is: %s', $user_password);
-$email_message .= 'Welcome login our awesome website: www.awesome.com';
-
-$email_headers = "From: The Sender Name <mengzhu0204@gmail.com>\r\n";
-$email_headers .= "To: $user_email\r\n";
-$email_headers .= "Content-Type: text/html\r\n";
-
-//  Send the email
-$email_result = mail($email_recipient, $email_subject, $email_message,  $email_headers);
-if($email_result){
-    $results['message'] = sprintf('You have successfully create a new user: %s', $user_name);
-}else{
-    $results['message'] = sprintf('Sorry, the reminding email does not go throught.');
-}
-
-echo json_encode($results);
 
 ?>
 
