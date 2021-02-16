@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 16, 2021 at 01:31 AM
+-- Generation Time: Feb 16, 2021 at 04:13 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -1057,6 +1057,7 @@ CREATE TABLE IF NOT EXISTS `tbl_urating` (
 DROP TABLE IF EXISTS `tbl_user`;
 CREATE TABLE IF NOT EXISTS `tbl_user` (
   `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_level` varchar(2) NOT NULL DEFAULT '0',
   `user_fname` varchar(250) NOT NULL,
   `user_name` varchar(250) NOT NULL,
   `user_pass` varchar(250) NOT NULL,
@@ -1066,20 +1067,18 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `last_login_time` timestamp NULL DEFAULT NULL,
   `success_login_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `last_login_time`, `success_login_number`) VALUES
-(1, 'Zhu', 'admin', 'admin123', 'z_meng@fanshaweonline.ca', '2021-02-09 05:33:09', '127.0.0.1', '2021-02-16 01:19:17', 27),
-(2, 'Zoe', 'Zoe6', '112233', 'z_meng@fanshaweonline.ca', '2021-02-08 11:33:35', '127.0.0.1', '2021-02-09 16:29:20', 5),
-(3, 'Yuan', 'ymeng', '112233', 'test@test.com', '2021-02-10 18:10:09', '127.0.0.1', NULL, NULL),
-(37, 'Zhu', 'Meng', '$2y$10$FOQe9B6CtLoKC/Zyzq8Ws.FKm4mhAADVKIhRfJ2b4RfRnNWCGbE/m', 'mengzhu0204@gmail.com', '2021-02-16 01:08:45', 'no', NULL, NULL),
-(38, 'Zhu', 'Meng', '$2y$10$.9oIUM3oJ1nmKAM3aSBtt.1YItKgLDo9mJYAsbEVd5RfXO/d/iwVO', 'mengzhu0204@gmail.com', '2021-02-16 01:11:55', 'no', NULL, NULL),
-(39, 'Zhu', 'Meng', '$2y$10$q7ZER3e8djpSHh90wdNdT.N7/6PlBeDGPH3LrYr1nzw9doSD16Sru', 'mengzhu0204@gmail.com', '2021-02-16 01:18:13', 'no', NULL, NULL),
-(40, 'Zhu', 'Meng', '$2y$10$lAnT1ffmC8F7WCIl/VthzezRwGOrnMCT6KebuwcGTvDHChmnHS3j6', 'mengzhu0204@gmail.com', '2021-02-16 01:28:52', 'no', NULL, NULL);
+INSERT INTO `tbl_user` (`user_id`, `user_level`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `last_login_time`, `success_login_number`) VALUES
+(1, '1', 'Zhu', 'admin', 'admin123', 'z_meng@fanshaweonline.ca', '2021-02-09 05:33:09', '127.0.0.1', '2021-02-16 15:55:46', 29),
+(2, '0', 'Zoe', 'Zoe6', '112233', 'z_meng@fanshaweonline.ca', '2021-02-08 11:33:35', '127.0.0.1', '2021-02-09 16:29:20', 5),
+(3, '0', 'Zhu', 'Meng', '$2y$10$FOQe9B6CtLoKC/Zyzq8Ws.FKm4mhAADVKIhRfJ2b4RfRnNWCGbE/m', 'mengzhu0204@gmail.com', '2021-02-16 01:08:45', 'no', NULL, NULL),
+(4, '2', 'super', 'superuser', '112233', 'mengzhu0204@gmail.com', '2021-02-16 06:32:19', '127.0.0.1', NULL, NULL),
+(9, '0', 'Zhu', 'Meng', '$2y$10$3kBUBehKhRGIIuvzubbUy.EBev.K4jPMZrTuTP.9Is4Td4OMWtxZS', 'z_meng@fanshaweonline.ca', '2021-02-16 16:07:07', 'no', NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
