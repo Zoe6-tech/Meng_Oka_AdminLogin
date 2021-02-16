@@ -14,3 +14,13 @@ https://phpgurukul.com/how-to-limit-login-attempt-using-php-and-mysql/
 
 <Count Total Successfully Login>
 https://stackoverflow.com/questions/3331322/how-do-i-increment-a-value-with-mysql-update-query-php
+
+
+1.
+https://www.bing.com/videos/search?q=mail()+php&&view=detail&mid=FE8681B52232C06A2EC1FE8681B52232C06A2EC1&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dmail%2528%2529%2Bphp%26qs%3Dn%26form%3DQBVRMH%26sp%3D-1%26ghc%3D1%26pq%3Dmail%2528%2529%2Bphp%26sc%3D8-10%26sk%3D%26cvid%3D564BC71D9639438A915501DDAC847359
+2.
+https://stackoverflow.com/questions/1555228/php-registration-auto-generate-password-or-let-user-choose-it
+3.
+https://www.php.net/manual/en/security.database.storage.php
+https://www.etutorialspoint.com/index.php/php-exercises/index.php/index.php/index.php/18-how-to-encrypt-password-in-php
+https://m.jb51.net/article/70210.htm
