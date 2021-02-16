@@ -18,6 +18,7 @@ $user_password = '';
 // gain submit data
 if(isset($_POST['submit'])){
 //user first name
+
     if(empty($_POST['fname'])) { 
         $results['message'] = 'first name is required'; 
         echo json_encode($results);
@@ -26,6 +27,7 @@ if(isset($_POST['submit'])){
     } else {
         $user_fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
     } 
+
 //user name
     if(empty($_POST['username'])) { 
         $results['message'] = 'username is required'; 
@@ -34,6 +36,7 @@ if(isset($_POST['submit'])){
     } else{
         $user_name = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
     }
+
 //user email
     if (empty($_POST['email'])) {
         $results['message'] ='email is required';
@@ -42,14 +45,15 @@ if(isset($_POST['submit'])){
     } else {
         $user_email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     }
+
 //password
-
-        $user_password = genRandomString();
-
-    $data = array(
+        $user_password = genRandomString();//Auto-generate the password for the user
+        $hash = password_hash($user_password, PASSWORD_DEFAULT);//password is encrypted and stored in the database
+    
+        $data = array(
         'fname' => trim($_POST['fname']),
         'username' => trim($_POST['username']),
-        'password' =>  $user_password,
+        'password' =>  $hash,//password_hash
         'email' => trim($_POST['email'])
     );
 
@@ -63,10 +67,10 @@ $email_recipient = $user_email; //to user email
 $email_subject = "This an email that remind that you can login in our website now";
 
 $email_message = sprintf('Your username is: %s, Your email is: %s', $user_name, $user_email);
-$email_message .= sprintf('Your password is: %s', $user_password);
+$email_message .= sprintf('Your current password is: %s', $user_password);
 $email_message .= 'Welcome login our awesome website: www.awesome.com';
 
-$email_headers = "From: The Sender Name <admin@awesome.com>\r\n";
+$email_headers = "From: The Sender Name <mengzhu0204@gmail.com>\r\n";
 $email_headers .= "To: $user_email\r\n";
 $email_headers .= "Content-Type: text/html\r\n";
 
@@ -75,7 +79,7 @@ $email_result = mail($email_recipient, $email_subject, $email_message,  $email_h
 if($email_result){
     $results['message'] = sprintf('You have successfully create a new user: %s', $user_name);
 }else{
-    $results['message'] = sprintf('Email sent fail.');
+    $results['message'] = sprintf('Sorry, the reminding email does not go throught.');
 }
 
 echo json_encode($results);
@@ -112,6 +116,6 @@ echo json_encode($results);
         <button class="subimt-createuser" type="submit" name="submit">Create user</button>
     </form>
 
-    <script src=".../js/mail.js" type="module"></script>
+    <script src="./js/mail.js" type="module"></script>
 </body>
 </html>
